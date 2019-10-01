@@ -27,10 +27,14 @@ class api
 		foreach($todosPersonagens as $personagem){
 			array_push($personagens,array(
 				"nome" => $personagem -> name,
-				"url" => $personagem -> thumbnail -> path.".jpg"
+				"url" => $personagem -> thumbnail -> path.".jpg",
+				"id" => $personagem -> id
 			));
 		}
 		echo json_encode($personagens);
 		return false;
+	}
+	public function coletar_Historias($heroi){
+
 	}
 }
