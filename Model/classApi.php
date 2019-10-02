@@ -34,7 +34,18 @@ class api
 		echo json_encode($personagens);
 		return false;
 	}
-	public function coletar_Historias($heroi){
-
+	public function coletar_Historias($id_Heroi){
+		$listaHistorias = $this -> chamada_Api("/v1/public/characters/".$id_Heroi."/stories?");
+		$historias = array();
+		foreach($listaHistorias as $historia){
+			array_push($historias,array(
+				"titulo" => $historia -> title,
+				"url" => $historia -> resourceURI,
+				"id" => $historia -> id,
+				"tipo" => $historia -> type
+			));
+		}
+			echo json_encode($historias);
+		return true;
 	}
 }

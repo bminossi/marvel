@@ -20,10 +20,17 @@ $(document).ready(function(){
 							$(".box").on("click",function(e){
 							var heroiSelecionado = $(this).html();
 							var styleHeroi = $(this).attr("style");
+							var idHeroi = $(this).attr("data-content")
 							var caixaLivre = $("#menu").find(".vazio:first");
+							if(caixaLivre.length>0){
 							caixaLivre.html(heroiSelecionado);
 							caixaLivre.attr("style",styleHeroi);
+							caixaLivre.attr("data-content",idHeroi);
 							caixaLivre.removeClass("vazio");
+							}
+							else{
+								alert("Ops! Remova um herói da seleção");
+							}
 						})
 						}
 				})
