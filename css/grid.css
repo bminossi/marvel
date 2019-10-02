@@ -21,3 +21,25 @@ body {
   padding: 20px;
   font-size: 150%;
 }
+.box2 {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 120%;
+  margin-top:10%;
+  height:22%;
+}
+.vazio{
+background-image:url("https://icons-for-free.com/iconfiles/png/512/man+marvel+mutant+super+hero+icon-1320166749252770283.png");
+background-size:contain;
+background-repeat: no-repeat;
+}
+#menu{
+    margin-top:2%;
+    background-color: #080808;
+    width: 18%;
+    margin-right: 10%;
+    height: 100%;
+    position: absolute;
+}
