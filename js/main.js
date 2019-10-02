@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var reqAtiva=false;
-		$('#pesquisa').on("keyup",function(){
+	$('#pesquisa').on("keyup",function(){
 		if($("#pesquisa").val().length>=4){
 			$("#herois").html("");
 			if(reqAtiva==false){
@@ -36,5 +36,27 @@ $(document).ready(function(){
 				})
 			}
 		}
+	})
+	$(".gerar").on("click",function(){
+		$("#herois").html("Resultados para sua pesquisa:<table id='resultado'></table");
+		$("#herois").removeClass("wrapper");
+		$("#herois").addClass("resultado");
+		var selecionados = $(".box2");
+		$.each(selecionados,function(a,b){
+			var idHeroi = $(b).attr("data-content");
+			var imagem = $(b).attr("style");
+			$.post("api.php","id_Heroi="+idHeroi).done(function(e){
+				var req = JSON.parse(e);
+				var randomItem = req[Math.floor(Math.random()*req.length)];
+				if(randomItem){
+					//$("#herois").append("<div id='resultado'>"+$(b)+"</div>");
+					$("#resultado").append("<tr id='"+idHeroi+"'><td></td><td>"+randomItem.titulo+"</td></tr>");
+					$("#"+idHeroi).find("td:first").attr("style",imagem)
+				}
+				else{
+					$("#resultado").append("<tr id='"+idHeroi+"'><td></td><td>Esse herói não possui histórias, trata-se de uma capa</td></tr>");
+				}
+			})
+		})
 	})
 })

@@ -38,14 +38,16 @@ class api
 		$listaHistorias = $this -> chamada_Api("/v1/public/characters/".$id_Heroi."/stories?");
 		$historias = array();
 		foreach($listaHistorias as $historia){
+			if($historia -> type == "story"){
 			array_push($historias,array(
 				"titulo" => $historia -> title,
 				"url" => $historia -> resourceURI,
 				"id" => $historia -> id,
 				"tipo" => $historia -> type
 			));
+			}
 		}
 			echo json_encode($historias);
-		return true;
+		return false;
 	}
 }
